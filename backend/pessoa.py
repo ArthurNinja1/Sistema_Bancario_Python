@@ -31,23 +31,3 @@ class Pessoa:
 
     def __str__(self):
         return f"Nome {self.nome} | CPF: {self.cpf} | telefone: {self.telefone} | email: {self.email}"
-
-
-
-
-
-
-if __name__ == "__main__":
-
-    p = Pessoa("  joão da silva ", "12345678901", "66988884444", "joao@email.com")
-    print(p)
-
-    p.alterar_telefone("  66999990000 ")
-    print(p)
-
-    try:
-        p.alterar_email("   ")
-    except ValueError as erro:
-        print("Erro:", erro)
-
-    print(p)
