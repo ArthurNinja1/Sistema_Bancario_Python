@@ -6,7 +6,7 @@ def mostrar_menu():
     print("2 - Depositar")
     print("3 - Sacar")
     print("4 - Ver extrato")
-    print("5 - Sair")
+    print("0 - Sair")
 
 def ler_inteiro(mensagem):
     while True:
@@ -38,17 +38,39 @@ def main():
         try:
             match opcao:
                 case 1:
-                    pass
+                    nome = input("nome: ")
+                    cpf = input("cpf: ")
+                    telefone = input("telefone: ")
+                    email = input("email: ")
+                    numero = banco.criar_conta(nome,cpf,telefone, email)
+                    print(f"Conta criada com o numero: {numero}")
+
                 case 2:
-                    pass
+                    numero = ler_inteiro("numero da conta: ")
+                    valor = ler_valor("valor de deposito: ")
+                    banco.depositar(numero, valor)
+                    print("Deposito realizado")
                 case 3:
-                    pass
+                    numero = ler_inteiro("numero da conta: ")
+                    valor = ler_valor("valor de saque: ")
+                    banco.sacar(numero, valor)
+                    print("Saque realizado")
+
                 case 4:
-                    pass
+                    numero = ler_inteiro("numero da conta: ")
+                    conta = banco.buscar_conta(numero)
+                    if conta is None:
+                        raise ValueError("conta não encontrada")
+                    print(f"Saldo: {conta.saldo:.2f} R$".replace(".",","))
+                    for linha in conta.historico:
+                        print(linha)
                 case 0:
-                    pass
+                    exit
                 case _:
                     print("opcão invalida")
-                    
+
         except ValueError as erro:
             print(f"erro: {erro}")
+
+
+main()
