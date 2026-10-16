@@ -65,7 +65,8 @@ def main():
                     for linha in conta.historico:
                         print(linha)
                 case 0:
-                    exit
+                    print("encerrando sistema")
+                    break
                 case _:
                     print("opcão invalida")
 
